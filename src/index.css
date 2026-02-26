@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-neon-blue: #00d2ff;
+  --color-neon-purple: #9d50bb;
+  --color-neon-pink: #ff0080;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#050505] text-white font-sans selection:bg-neon-purple/30;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+  
+  .neon-text-blue {
+    @apply text-neon-blue drop-shadow-[0_0_8px_rgba(0,210,255,0.5)];
+  }
+  
+  .neon-border-gradient {
+    background: linear-gradient(45deg, var(--color-neon-blue), var(--color-neon-purple), var(--color-neon-pink));
+    padding: 2px;
+  }
+
+  .animate-rgb-text {
+    background: linear-gradient(
+      to right,
+      #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rgb-shift 3s linear infinite;
+  }
+
+  @keyframes rgb-shift {
+    to {
+      background-position: 200% center;
+    }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
